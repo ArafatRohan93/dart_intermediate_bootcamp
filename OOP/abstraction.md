@@ -137,6 +137,3 @@ That’s abstraction: working with a general interface without knowing the inter
 * Abstract classes define a **common interface** for related things
 * You can use abstraction to design scalable systems like a Task Manager
 
----
-
-Would you like updated self-test problems based on this Task abstraction model?
