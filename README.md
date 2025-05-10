@@ -12,15 +12,15 @@ The repository is organized as follows:
 
 Explore the OOP concepts through the following files:
 
-1. [**Inheritance**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/inheritance.dart): Demonstrates how classes can inherit properties and methods from other classes.
+1. [**Inheritance**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/inheritance.md): Demonstrates how classes can inherit properties and methods from other classes.
 
-2. [**Polymorphism**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/polymorphism.dart): Shows how methods can behave differently based on the object that is invoking them.
+2. [**Polymorphism**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/polymorphism.md): Shows how methods can behave differently based on the object that is invoking them.
 
-3. [**Encapsulation**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/encapsulation.dart): Illustrates how to restrict access to certain components of an object.
+3. [**Encapsulation**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/encapsulation.md): Illustrates how to restrict access to certain components of an object.
 
-4. [**Abstraction**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/abstraction.dart): Explains how to hide complex implementation details and show only the necessary features of an object.
+4. [**Abstraction**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/abstraction.md): Explains how to hide complex implementation details and show only the necessary features of an object.
 
-5. [**Composition vs Inheritance**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/inheritance_vs_composition.dart): Covers how to define contracts that classes can implement.
+5. [**Composition vs Inheritance**](https://github.com/ArafatRohan93/dart_intermediate_bootcamp/blob/main/OOP/inheritance_vs_composition.md): Covers how to define contracts that classes can implement.
 
 ## 🚀 Getting Started
 
