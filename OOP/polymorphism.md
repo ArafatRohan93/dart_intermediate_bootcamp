@@ -1,98 +1,102 @@
-## Polymorphism
+# Polymorphism in Dart (with Real App Use Case)
 
-### What is Polymorphism?
+## What is Polymorphism?
 
-**Polymorphism** means “many forms”.
+**Polymorphism** means “many forms.” In programming, it lets us write code that works with different types of objects that share a common interface or superclass.
 
-It lets us write code that works with **different types of objects** as long as they follow the same interface or
-abstract class. This is powerful because:
+It allows us to:
 
-* You can **treat different classes the same way**
-* You can **swap in new behaviors** without changing your code
+* Treat different subclasses as the same type
+* Call methods without knowing the exact class
+* Write flexible and extensible code
 
----
+### Simple Analogy:
 
-### Real-World Example: Task Runner
+If `NotificationItem` is a "general type", then `LikeNotification`, `CommentNotification`, and `FollowNotification` are "specific types".
 
-In our app, we might have different task types: `Upload`, `Download`, `Cleanup`, etc. But we want to run them all the
-same way.
-
-If each task extends the abstract class `Task` with a `run()` method, we can call `task.run()` — **no matter which kind
-it is**.
+Even if you don’t know the specific type, you can still **call shared methods** like `displayText` or `navigateRoute`.
 
 ---
 
-### Class Diagram
+## Real App Scenario: Rendering a Notification List
+
+Let’s say your app’s notification screen receives a list of dynamic notification types. You don’t want to write separate rendering logic for each one — instead, you **loop through them polymorphically**.
+
+This is what makes polymorphism powerful in Dart + Flutter:
+
+* UI code becomes cleaner
+* Models are easier to manage
+* Adding new types later becomes simpler
+
+---
+
+## Class Diagram (Review from Last Section)
 
 ```mermaid
 classDiagram
-    class Task {
+    class NotificationItem {
         <<abstract>>
         + String id
-        + void run()
+        + DateTime timestamp
+        + String displayText
+        + String navigateRoute
     }
 
-    class PostUploader {
-        + void run()
-    }
+    class LikeNotification
+    class CommentNotification
+    class FollowNotification
 
-    class PostDownloader {
-        + void run()
-    }
-
-    Task <|-- PostUploader
-    Task <|-- PostDownloader
-```
-
-(Same as abstraction, but here we **focus on using them polymorphically**.)
-
----
-
-### Dart Code Example
-
-```dart
-abstract class Task {
-  final String id;
-
-  Task(this.id);
-
-  void run();
-}
-
-class PostUploader extends Task {
-  final String postData;
-
-  PostUploader({required String id, required this.postData}) : super(id);
-
-  @override
-  void run() => print('Uploading: $postData');
-}
-
-class PostDownloader extends Task {
-  final String postId;
-
-  PostDownloader({required String id, required this.postId}) : super(id);
-
-  @override
-  void run() => print('Downloading post $postId');
-}
+    NotificationItem <|-- LikeNotification
+    NotificationItem <|-- CommentNotification
+    NotificationItem <|-- FollowNotification
 ```
 
 ---
 
-### Example Usage
+## Dart Code: Polymorphism in Action
 
 ```dart
-void main() {
-  List<Task> tasks = [
-    PostUploader(id: 'u1', postData: 'Hello!'),
-    PostDownloader(id: 'd1', postId: 'p001'),
-  ];
-
-  for (var task in tasks) {
-    task.run(); // Same method call, different result
+void renderNotificationScreen(List<NotificationItem> notifications) {
+  for (var notification in notifications) {
+    print(notification.displayText);     // same method for all types
+    print('Go to: ${notification.navigateRoute}');
+    print('---');
   }
 }
+
+void main() {
+  final List<NotificationItem> notificationFeed = [
+    LikeNotification("n1", DateTime.now(), "p1", "Alice"),
+    CommentNotification("n2", DateTime.now(), "p2", "Nice!"),
+    FollowNotification("n3", DateTime.now(), "u123", "Bob")
+  ];
+
+  renderNotificationScreen(notificationFeed);
+}
 ```
+
+---
+
+## Benefits of Polymorphism in Dart
+
+| Benefit            | Description                                                                |
+| ------------------ | -------------------------------------------------------------------------- |
+| Code Reusability   | One function handles multiple object types                                 |
+| Cleaner Flutter UI | Widgets can render all notification types using the same interface         |
+| Easier to Maintain | New types (like “MentionNotification”) can be added without changing logic |
+| Open for Extension | You don’t modify old code to support new behavior                          |
+
+---
+
+## Practice Task
+
+Try this on your own:
+
+* Add a new `MentionNotification` class
+* Make sure it extends `NotificationItem`
+* Override `displayText` and `navigateRoute`
+* Add a sample JSON object with `"type": "mention"`
+* Update the `factory` method to include the new type
+* Add to the `main()` function and test the output
 
 ---

@@ -1,4 +1,4 @@
-## 1.2 Understanding Abstraction in OOP
+# Understanding Abstraction in OOP
 
 ### What is Abstraction?
 
