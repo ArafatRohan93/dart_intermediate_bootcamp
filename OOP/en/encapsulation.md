@@ -1,4 +1,4 @@
-# Encapsulation in Real Development
+# Encapsulation
 
 ---
 
